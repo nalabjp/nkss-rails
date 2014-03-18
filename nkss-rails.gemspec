@@ -8,7 +8,7 @@ Gem::Specification.new do |s|
   s.name        = "nkss-rails"
   s.version     = Nkss::VERSION
   s.authors     = ["Rico Sta. Cruz", "Nadarei, Inc."]
-  s.email       = ["rico@ambiescent.com"]
+  s.email       = ["john@uxgent.co"]
   s.homepage    = "http://nadarei.co/nkss-rails"
   s.summary     = "Create pretty styleguides for your Rails 3.2 projects."
   s.description = "Nkss-rails is a drop-in, easy-to-use, gorgeous-by-default Rails plugin you can put into your
@@ -22,5 +22,5 @@ projects so you can instantly have cute docs."
   s.add_dependency "kss"
   s.add_dependency "ffaker"
   s.add_dependency "bluecloth"
-  s.add_dependency "haml"
+  s.add_dependency "slim"
 end
