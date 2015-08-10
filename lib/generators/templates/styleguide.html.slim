@@ -4,15 +4,16 @@
 /
 / You may customize this by adding your own scripts and styles.
 
-doctype 5
+doctype html
 html
   head
-    meta charset: 'utf-8'
-    title Styleguides
+    meta charset='utf-8'
+    title
+      | Styleguides
     = stylesheet_link_tag 'application'
-    /![if lt IE 9]
-      script src: 'http://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.6/html5shiv.min.js'
+    /[if lt IE 9]
+      script src='http://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.6/html5shiv.min.js'
     = yield :head  if content_for?(:head)
 
-body
-  = yield :body  if content_for?(:body)
+  body
+    = yield :body  if content_for?(:body)

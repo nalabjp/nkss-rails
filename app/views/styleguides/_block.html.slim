@@ -4,32 +4,39 @@
 / Don't like me? Just copy me into `app/views/styleguides/_block.html.haml` in
 / your app.
 
-section.sg-example id: section.section
+section.sg-example id="#{section.section}"
   h3
-    a href: "##{section.section}" = section.section
+    a href="##{section.section}"
+      = section.section
 
   button.sg-button.sg-view-code HTML
 
   .sg-description
-    span.sg-filename= section.filename
+    span.sg-filename
+      = section.filename
     == kss_markdown(h(section.description)).html_safe
 
     - if section.modifiers.any?
       ul.sg-modifiers
         - modifiers.each do |modifier|
           li
-            strong= modifier.name
+            strong
+              = modifier.name
             = "-"
             = modifier.description
 
   .sg-canvases
-    .sg-canvas class: canvas_class
-      div style: inner_style != html
+    .sg-canvas class="#{canvas_class}"
+      div style="#{inner_style}!"
+        = html
 
     - modifiers.each do |modifier|
-      .sg-modifier.sg-canvas class: canvas_class
-        span.sg-modifier-name= modifier.name
-        div style: inner_style = capture modifier.name, &code_block
+      .sg-modifier.sg-canvas class="#{canvas_class}"
+        span.sg-modifier-name
+          = modifier.name
+        div style="#{inner_style}"
+          = capture modifier.name, &code_block
 
     .sg-html
-      pre.prettyprint.lang-html!= h(html.gsub('', ''))
+      pre class='prettyprint.lang-html!'
+        = h(html.gsub('', ''))

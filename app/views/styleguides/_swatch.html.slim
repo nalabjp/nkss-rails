@@ -1,9 +1,11 @@
-.sg-swatch class: ('sg-dark' if dark)
-  .sg-text style: "color: #{color}"
+.sg-swatch class=('sg-dark' if dark)
+  .sg-text style="color: #{color}"
     = color
 
-  .sg-background style: "background: #{color}"
-    strong= identifier
+  .sg-background style="background: #{color}"
+    strong
+      = identifier
 
     - if description
-      small= description
+      small
+        = description
