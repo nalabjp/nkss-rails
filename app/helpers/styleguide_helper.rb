@@ -31,6 +31,7 @@ module StyleguideHelper
 
     raise "Section '#{section_id}' not found."  unless section.filename
 
+    example_slim = slim_code_from(*block.source_location, __method__, section_id)
     example_html = capture(&block)
 
     defaults = { background: 'light', align: 'left', code: 'true' }
@@ -48,6 +49,7 @@ module StyleguideHelper
       locals: {
         canvas_class: classes.join(' '),
         code_block: block,
+        slim: example_slim,
         html: example_html,
         section: section,
         modifiers: (section.modifiers rescue Array.new),
@@ -122,6 +124,81 @@ module StyleguideHelper
     str = BlueCloth.new(text).to_html
     str = str.html_safe  if str.respond_to?(:html_safe)
     str
+  end
+
+  private
+
+  def slim_code_from(filename, source_start, method_name, section_id)
+    # Example:
+    # parsed = parse_ slim(filename)
+    # => [:multi,
+    #  [:newline],
+    #  [:newline],
+    #  [:newline],
+    #  [:slim,
+    #   :output,
+    #   true,
+    #   "kss_block '1.1' do",
+    #   [:multi,
+    #    [:newline],
+    #    [:html,
+    #     :tag,
+    #     "div",
+    #     [:html, :attrs, [:html, :attr, "class", [:static, "example"]]],
+    #     [:multi,
+    #      [:newline],
+    #      [:slim, :text, :verbatim, [:multi, [:slim, :interpolate, "Example markup"]]],
+    #      [:newline]]],
+    #    [:html,
+    #     :tag,
+    #     ".",
+    #     [:html, :attrs, [:html, :attr, "class", [:static, "foo"]]],
+    #     [:multi, [:newline], [:slim, :output, true, "\"\#{'bar'}\"", [:multi, [:newline]]]]],
+    #    [:html,
+    #     :tag,
+    #     "#",
+    #     [:html, :attrs, [:html, :attr, "id", [:static, "baz"]]],
+    #     [:multi, [:newline]]],
+    #    [:slim, :text, :verbatim, [:multi, [:slim, :interpolate, "xyz"]]],
+    #    [:newline]]]]
+    #
+    parsed = parse_slim(filename)
+    source_length = 0
+    identifier = "#{method_name} '#{section_id}'".freeze
+
+    parsed.each do |item|
+      if item[0].eql?(:slim) && item[3].include?(identifier)
+        source_length = count_new_line(item[4])
+        break
+      end
+    end
+
+    # reduce last count of :newline
+    source_length -= 1
+
+    File.readlines(filename).slice(source_start, source_length).join
+  end
+
+  def parse_slim(filename)
+    unless parsed_slim_cache.has_key?(filename)
+     parsed_slim_cache[filename] = Slim::Parser.new.call(File.read(filename))
+    end
+    parsed_slim_cache[filename]
+  end
+
+  def parsed_slim_cache
+    @parsed_slim_cache ||= {}
+  end
+
+  def count_new_line(ary, num = 0)
+    ary.inject(num) do |num, item|
+      if item.is_a?(Array)
+        num = count_new_line(item, num)
+      else
+        num += 1 if item.eql?(:newline)
+      end
+      num
+    end
   end
 
 end

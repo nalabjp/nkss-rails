@@ -9,7 +9,7 @@ section.sg-example id="#{section.section}"
     a href="##{section.section}"
       = section.section
 
-  button.sg-button.sg-view-code HTML
+  button.sg-button.sg-view-code Slim & HTML
 
   .sg-description
     span.sg-filename
@@ -36,6 +36,11 @@ section.sg-example id="#{section.section}"
           = modifier.name
         div style="#{inner_style}"
           = capture modifier.name, &code_block
+
+    / TODO: Will fix CSS
+    .sg-html
+      pre class='prettyprint.lang-html!'
+        = h(slim.gsub('', ''))
 
     .sg-html
       pre class='prettyprint.lang-html!'
