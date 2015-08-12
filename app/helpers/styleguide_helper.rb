@@ -176,7 +176,9 @@ module StyleguideHelper
     # reduce last count of :newline
     source_length -= 1
 
-    File.readlines(filename).slice(source_start, source_length).join
+    File.readlines(filename).slice(source_start, source_length).map do |line|
+      line.sub(/\A\s\s/,  '')
+    end.join
   end
 
   def parse_slim(filename)
