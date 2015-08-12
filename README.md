@@ -5,6 +5,8 @@ This repository is the customized [nkss-rails](https://github.com/nadarei/nkss-r
 
 In this repository you have to use the slim instead of haml.
 
+![Image](https://cloud.githubusercontent.com/assets/1544172/9228890/885dd170-4155-11e5-8036-fc03ed40cf71.png)
+
 __Thanks to [Rico Sta. Cruz](https://github.com/rstacruz) and [Nadarei Co.](https://github.com/nadarei) for original development.__
 
 Nadarei KSS
