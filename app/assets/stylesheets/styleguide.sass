@@ -315,6 +315,22 @@ body.sg-full
   &.sg-expanded
     display: block
 
+  // Copy from .sg-canvas > .sg-modifier-name
+  & > .sg-code-name
+    @extend .sg-badge
+    bottom: auto
+    top: 0
+
+    border-bottom: solid 1px #ddd
+    border-top: 0
+    border-right: 0
+    border-radius: 0
+    border-bottom-left-radius: 3px
+
+    font-weight: bold
+    color: $blue
+    padding: 3px 15px
+
   border: solid 1px #ccc
   border-top: 0
   position: relative
@@ -329,8 +345,12 @@ body.sg-full
     text-shadow: 0 1px 0 rgba(white, 0.6)
     font-size: 8pt
     font-family: $mono
+    margin: 0
 
     overflow-y: scroll
+
+.sg-slim
+  @extend .sg-html
 
 .sg-canvases
   border: solid 4px #f0f0f0

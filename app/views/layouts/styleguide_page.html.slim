@@ -45,6 +45,7 @@
         }
 
         var $block = $(this).closest('.sg-example');
+        $block.find('.sg-slim').toggleClass('sg-expanded');
         $block.find('.sg-html').toggleClass('sg-expanded');
         $block.find('.sg-view-code').toggleClass('sg-expanded');
       });
@@ -70,7 +71,7 @@
         }
 
         var $sections = $(this);
-        var $parent = options.parent |$(window);
+        var $parent = options.parent || $(window);
 
         // Find the top offsets of each section
         var offsets = [];

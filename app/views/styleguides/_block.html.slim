@@ -38,10 +38,14 @@ section.sg-example id="#{section.section}"
           = html.sub('$modifier_class', " #{modifier.class_name}").html_safe
 
     / TODO: Will fix CSS
-    .sg-html
+    .sg-slim
+      span.sg-code-name
+        | Slim
       pre class='prettyprint.lang-html!'
         = h(slim.gsub('', ''))
 
     .sg-html
+      span.sg-code-name
+        | HTML
       pre class='prettyprint.lang-html!'
         = h(html.gsub('', ''))
