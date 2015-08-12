@@ -7,8 +7,8 @@ require "nkss/version"
 Gem::Specification.new do |s|
   s.name        = "nkss-rails"
   s.version     = Nkss::VERSION
-  s.authors     = ["Rico Sta. Cruz", "Nadarei, Inc."]
-  s.email       = ["john@uxgent.co"]
+  s.authors     = ["Rico Sta. Cruz", "Nadarei, Inc.", "nalabjp"]
+  s.email       = ["john@uxgent.co", "nalabjp@gmail.com"]
   s.homepage    = "http://nadarei.co/nkss-rails"
   s.summary     = "Create pretty styleguides for your Rails 3.2 projects."
   s.description = "Nkss-rails is a drop-in, easy-to-use, gorgeous-by-default Rails plugin you can put into your
