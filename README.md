@@ -1,8 +1,17 @@
+nkss-rails with Slim
+====================
+
+This repository is the customized [nkss-rails](https://github.com/nadarei/nkss-rails).
+
+In this repository you have to use the slim instead of haml.
+
+__Thanks to [Rico Sta. Cruz](https://github.com/rstacruz) and [Nadarei Co.](https://github.com/nadarei) for original development.__
+
 Nadarei KSS
 ===========
 
 **Nadarei KSS Styleguides** lets you create pretty styleguides for your Rails
-3.2 projects.
+3.2 or higher projects.
 
 ![Image](https://raw.github.com/nadarei/nkss-rails/misc/sample.jpg)
 
@@ -28,11 +37,11 @@ All you gotta worry about is documenting your styles!
 Installation
 ------------
 
-Add me, and `haml`, to your `Gemfile`.
+Add me, and `slim`, to your `Gemfile`.
 
 ~~~ ruby
-gem 'haml'
-gem 'nkss-rails', github: 'nadarei/nkss-rails'
+gem 'slim'
+gem 'nkss-rails', github: 'nalabjp/nkss-rails'
 ~~~
 
 Then type `bundle` to update your bundle. Then, install the needed files into
@@ -54,15 +63,12 @@ mission: edit this file to add your own sections.
 
 * __app/views/styleguides/__  
 Your styleguides live here. Your mission:
-edit the first styleguide (*1.html.haml*) and later, add your own.
+edit the first styleguide (*1.html.slim*) and later, add your own.
 
-* __app/views/layouts/styleguide.html.haml__  
+* __app/views/layouts/styleguide.html.slim__  
 The layout for your styleguide. Your mission: make sure that this loads the
 right styles and scripts that your
 application uses.
-
-* __app/assets/stylesheets/styleguide-extras.css__ (optional)  
-Place any extra CSS definitions in here.
 
 * __app/assets/stylesheets/example-for-styleguides.css__ (optional)  
 An example of a documented KSS block. Study it, then delete it.
@@ -113,13 +119,13 @@ section you want to document, and `code` describes the CSS selector of it.
 ### Add the markup
 
 Add the markup in the corresponding section in
-`app/views/styleguides/N.html.haml`, where `N` is the main section number. In
-this case, we'll be editing `1.html.haml`.
+`app/views/styleguides/N.html.slim`, where `N` is the main section number. In
+this case, we'll be editing `1.html.slim`.
 
-~~~ haml
--# 1.html.haml
+~~~ slim
+-# 1.html.slim
 = kss_block '1.3' do
-  %a.button{href: '#'} Do things
+  a.button href='#' Do things
 ~~~
 
 ### For new main sections
@@ -145,32 +151,8 @@ You should see your newly-documented style in
 Using in production
 -------------------
 
-Just make sure to add `styleguide.css` and `styleguide-extras.css` to your
+Just make sure to add `styleguide.css` to your
 precompilation list. Usually this is in `config/environments/production.rb`.
-
-Our bias
---------
-
-We use this happily with our client projects, and our clients are happy with it,
-too. It has quite a bias with our process (for instance: HAML by default), sorry
-about that.
-
-Our primary purpose of maintaining this package is to use it for our projects;
-as such, we can't always guarantee that all contributions will be merged in.
-
-If you feel this is too limiting, you can always override the
-[templates](https://github.com/nadarei/nkss-rails/tree/master/app/views)
-or 
-[CSS](https://github.com/nadarei/nkss-rails/tree/master/app/assets/stylesheets)
-by copying them to your application.
-
-Alternatively, simply copy the entire gem to your project and hack away at it
-yourself:
-
-    $ git clone https://github.com/nadarei/nkss-rails.git ./vendor/nkss-rails
-    
-    # In your gemfile:
-    gem 'nkss-rails', path: 'vendor/nkss-rails'
 
 Acknowledgements
 ----------------
