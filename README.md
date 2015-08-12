@@ -7,7 +7,7 @@ In this repository you have to use the slim instead of haml.
 
 It will show a slim code along with the HTML code.
 
-![Image](https://cloud.githubusercontent.com/assets/1544172/9228890/885dd170-4155-11e5-8036-fc03ed40cf71.png)
+![Image](https://cloud.githubusercontent.com/assets/1544172/9229538/918fc002-4158-11e5-89ea-4d89154c9c55.png)
 
 __Thanks to [Rico Sta. Cruz](https://github.com/rstacruz) and [Nadarei Co.](https://github.com/nadarei) for original development.__
 
