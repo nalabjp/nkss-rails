@@ -35,7 +35,7 @@ section.sg-example id="#{section.section}"
         span.sg-modifier-name
           = modifier.name
         div style="#{inner_style}"
-          = capture modifier.name, &code_block
+          = html.sub('$modifier_class', " #{modifier.class_name}").html_safe
 
     / TODO: Will fix CSS
     .sg-html
