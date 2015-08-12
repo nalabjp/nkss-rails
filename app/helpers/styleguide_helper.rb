@@ -164,10 +164,10 @@ module StyleguideHelper
     #
     parsed = parse_slim(filename)
     source_length = 0
-    identifier = "#{method_name} '#{section_id}'".freeze
+    re = Regexp.new("#{method_name} (\'#{section_id}\'|\"#{section_id}\")")
 
     parsed.each do |item|
-      if item[0].eql?(:slim) && item[3].include?(identifier)
+      if item[0].eql?(:slim) && item[3] =~ re
         source_length = count_new_line(item[4])
         break
       end
