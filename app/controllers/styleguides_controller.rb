@@ -1,4 +1,4 @@
-class StyleguidesController < ApplicationController
+class StyleguidesController < ActionController::Base
 
   helper_method :styleguide_options
   helper_method :styleguide_title
