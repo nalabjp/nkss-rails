@@ -1,3 +1,8 @@
+v0.1.1
+-------------------
+* Change base controller
+* Fix bug of generator
+
 v0.1.0
 -------------------
 
