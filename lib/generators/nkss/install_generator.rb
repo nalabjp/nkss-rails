@@ -8,7 +8,6 @@ module Nkss
     def install_steps
       copy_file '1.html.slim', 'app/views/styleguides/1.html.slim'
       copy_file 'styleguides.yml', 'config/styleguides.yml'
-      copy_file 'styleguide-extras.scss', 'app/assets/stylesheets/styleguide-extras.scss'
       copy_file 'example-for-styleguides.css', 'app/assets/stylesheets/example-for-styleguides.css'
       copy_file 'styleguide.html.slim', 'app/views/layouts/styleguide.html.slim'
 
