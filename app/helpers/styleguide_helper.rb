@@ -16,6 +16,21 @@ module StyleguideHelper
   #  * `width` - (Optional) width for the inner area. Specify this for
   #  documenting long things.
   #
+  #  * `height` - (Optional) height for the inner area. Specify this for
+  #  documenting long things.
+  #
+  #  * `padding_top` - (Optional) padding value to optimize space around absolutely
+  #  positioned modules that would otherwise get cut off by the inner area box
+  #
+  #  * `padding_right` - (Optional) padding value to optimize space around absolutely
+  #  positioned modules that would otherwise get cut off by the inner area box
+  #
+  #  * `padding_left` - (Optional) padding value to optimize space around absolutely
+  #  positioned modules that would otherwise get cut off by the inner area box
+  #
+  #  * `padding_bottom` - (Optional) padding value to optimize space around absolutely
+  #  positioned modules that would otherwise get cut off by the inner area box
+  #
   # Example:
   #
   #     = kss_block '1.1' do
@@ -41,8 +56,13 @@ module StyleguideHelper
     align = "align-#{options[:align]}"
     classes = [bg, align]
 
-    inner_style = ''
-    inner_style = "width: #{options[:width]}px; margin: 0 auto"  if options[:width]
+    inner_style = []
+    inner_style.concat ["width: #{options[:width]}px", 'margin: 0 auto']  if options[:width]
+    inner_style.concat ["height: #{options[:height]}px", 'margin: 0 auto']  if options[:height]
+    inner_style.concat ["padding-top: #{options[:padding_top]}px", 'margin: 0 auto'] if options[:padding_top]
+    inner_style.concat ["padding-right: #{options[:padding_right]}px", 'margin: 0 auto'] if options[:padding_right]
+    inner_style.concat ["padding-bottom: #{options[:padding_bottom]}px", 'margin: 0 auto'] if options[:padding_bottom]
+    inner_style.concat ["padding-left: #{options[:padding_left]}px", 'margin: 0 auto'] if options[:padding_left]
 
     render \
       partial: 'styleguides/block',
@@ -54,7 +74,7 @@ module StyleguideHelper
         section: section,
         modifiers: (section.modifiers rescue Array.new),
         options: options,
-        inner_style: inner_style,
+        inner_style: inner_style.uniq.join(';'),
       }
   end
 
