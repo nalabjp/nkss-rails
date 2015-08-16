@@ -3,23 +3,13 @@ nkss-rails with Slim
 
 This repository is the customized [nkss-rails](https://github.com/nadarei/nkss-rails).
 
-In this repository you have to use the slim instead of haml.
+In this repository you have to use the Slim instead of Haml.
 
-It will show a slim code along with the HTML code.
+It will show a Slim code along with the HTML code.
 
 ![Image](https://cloud.githubusercontent.com/assets/1544172/9230044/19335c2e-415b-11e5-9e47-b0b100eba4d8.png)
 
 __Thanks to [Rico Sta. Cruz](https://github.com/rstacruz) and [Nadarei Co.](https://github.com/nadarei) for original development.__
-
-Nadarei KSS
-===========
-
-**Nadarei KSS Styleguides** lets you create pretty styleguides for your Rails
-3.2 or higher projects.
-
-![Image](https://raw.github.com/nadarei/nkss-rails/misc/sample.jpg)
-
-[See more screenshots here.](https://github.com/nadarei/nkss-rails/tree/misc)
 
 What is KSS?
 ------------
@@ -150,7 +140,7 @@ sections:
 ### That's it!
 
 You should see your newly-documented style in
-`http://localhost:8000/styleguides/1`.
+`http://localhost:3000/styleguides/1`.
 
 Using in production
 -------------------
