@@ -34,8 +34,8 @@ module StyleguideHelper
   # Example:
   #
   #     = kss_block '1.1' do
-  #       %div.foo
-  #         Put markup here!
+  #       div.foo
+  #         | Put markup here!
   #
   # Example with options:
   #
@@ -115,8 +115,8 @@ module StyleguideHelper
   # Yeah, well, you'll need this for a lot of styleguide sections. Use it like
   # so:
   #
-  #     %p= lorem.paragraph
-  #     %li= lorem.sentence
+  #     p= lorem.paragraph
+  #     li= lorem.sentence
   #
   def lorem
     require 'ffaker'
