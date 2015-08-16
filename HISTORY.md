@@ -1,5 +1,11 @@
+v0.1.2
+-------------------
+
+* Add inner style options
+
 v0.1.1
 -------------------
+
 * Change base controller
 * Fix bug of generator
 
