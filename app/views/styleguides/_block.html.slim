@@ -34,15 +34,15 @@ section.sg-example id="#{section.section}"
       .sg-modifier.sg-canvas class="#{canvas_class}"
         span.sg-modifier-name
           = modifier.name
-        div style="#{inner_style}"
-          = html.sub('$modifier_class', " #{modifier.class_name}").html_safe
+        div style="#{inner_style}!"
+          = parse_html(html, modifier.class_name).html_safe
 
     / TODO: Will fix CSS
     .sg-slim
       span.sg-code-name
         | Slim
-      pre class='prettyprint.lang-html!'
-        = h(slim.gsub('', ''))
+      pre
+        = slim
 
     .sg-html
       span.sg-code-name

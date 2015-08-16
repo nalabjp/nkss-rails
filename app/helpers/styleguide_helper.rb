@@ -126,6 +126,20 @@ module StyleguideHelper
     str
   end
 
+  # ### parse_html
+  # Parse HTML and replace modifier classes
+  def parse_html(original_html, modifier_class = false)
+    html = original_html.clone
+
+    if modifier_class
+      html.gsub!('$modifier_class', "#{modifier_class}")
+    else
+      html.gsub!(/\s*\$modifier_class/, '')
+    end
+
+    html
+  end
+
   private
 
   def slim_code_from(filename, source_start, method_name, section_id)
