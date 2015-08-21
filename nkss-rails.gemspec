@@ -21,6 +21,6 @@ projects so you can instantly have cute docs."
 
   s.add_dependency "kss"
   s.add_dependency "ffaker"
-  s.add_dependency "bluecloth"
+  s.add_dependency "redcarpet"
   s.add_dependency "slim"
 end

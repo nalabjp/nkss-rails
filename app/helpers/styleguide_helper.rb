@@ -126,24 +126,18 @@ module StyleguideHelper
 
   # ### kss_markdown
   # Markdownify some text.
-
   def kss_markdown(text)
-    text.gsub!(/^\s*\-*=*\s*\n*/, '') # Strip '----' lines
-    lines = text.split("\n")
-
-    # Transform the first line
-    if lines.length > 0
-      lines[0].gsub!(/^#*\s*/, '## ')         # "Hello" => "## Hello"
-      lines[0].gsub!(/\((.*?)\):?$/, '`\1`')  # "Hey (code):" => "Hey `code`"
-    end
-
-    text = lines.join("\n")
-
-    # Markdownify
-    require 'bluecloth'
-    str = BlueCloth.new(text).to_html
-    str = str.html_safe  if str.respond_to?(:html_safe)
-    str
+    require 'redcarpet'
+    Redcarpet::Markdown.new(
+      Redcarpet::Render::HTML,
+      autolink: true,
+      tables: true,
+      fenced_code_blocks: true,
+      strikethrough: true,
+      hard_wrap: true,
+      space_after_headers: true,
+      underline: true
+    ).render(text).html_safe
   end
 
   # ### parse_html
