@@ -3,5 +3,5 @@
   h2.sg-page-title id=(id)
     strong
       = id
-    = title
+    = link_to title, "styleguides/#{id}"
   = render file: with_namespace("styleguides/#{@section}")
