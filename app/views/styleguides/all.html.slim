@@ -1,6 +1,7 @@
 - @sections.each do |id, title|
   - @section = id.to_i
-  h2.sg-page-title id: id
-    strong= id
+  h2.sg-page-title id=(id)
+    strong
+      = id
     = title
   = render file: with_namespace("styleguides/#{@section}")
