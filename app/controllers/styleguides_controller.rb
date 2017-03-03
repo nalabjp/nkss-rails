@@ -16,10 +16,6 @@ class StyleguidesController < ActionController::Base
     render template: with_namespace("styleguides/#{@section}"), layout: with_namespace('styleguide_page')
   end
 
-  def index
-    redirect_to nkss.root_url + "1"
-  end
-
   def all
     @sections = styleguide_sections
     @single_page = true
