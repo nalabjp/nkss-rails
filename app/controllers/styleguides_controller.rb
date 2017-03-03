@@ -4,13 +4,16 @@ class StyleguidesController < ActionController::Base
   helper_method :styleguide_title
   helper_method :styleguide_sections
   helper_method :styleguide_root
+  helper_method :styleguide_namespace
+
+  delegate :with_namespace, to: :view_context
 
   before_filter :set_styleguide, :only => [ :show, :all ]
 
   def show
     @section = params[:section].to_i
 
-    render template: "styleguides/#{@section}", layout: 'styleguide_page'
+    render template: with_namespace("styleguides/#{@section}"), layout: with_namespace('styleguide_page')
   end
 
   def index
@@ -20,7 +23,7 @@ class StyleguidesController < ActionController::Base
   def all
     @sections = styleguide_sections
     @single_page = true
-    render template: "styleguides/all", layout: 'styleguide_page'
+    render template: with_namespace("styleguides/all"), layout: with_namespace('styleguide_page')
   end
 
 private
@@ -45,5 +48,9 @@ private
   def styleguide_root
     path = styleguide_options['root'] || '/app/assets/stylesheets'
     File.join Rails.root, path
+  end
+
+  def styleguide_namespace
+    styleguide_options['namespace']
   end
 end

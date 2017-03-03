@@ -142,4 +142,4 @@
 - content_for :head do
   = stylesheet_link_tag 'styleguide'
 
-= render file: 'layouts/styleguide'
+= render file: with_namespace('layouts/styleguide')

@@ -3,4 +3,4 @@
   h2.sg-page-title id: id
     strong= id
     = title
-  = render file: "styleguides/#{@section}"
+  = render file: with_namespace("styleguides/#{@section}")
