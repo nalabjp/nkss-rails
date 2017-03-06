@@ -65,7 +65,7 @@ module StyleguideHelper
     inner_style.concat ["padding-left: #{options[:padding_left]}px", 'margin: 0 auto'] if options[:padding_left]
 
     render \
-      partial: with_namespace('styleguides/block'),
+      partial: with_namespace('styleguides/block', partial: true),
       locals: {
         canvas_class: classes.join(' '),
         code_block: block,
@@ -90,7 +90,7 @@ module StyleguideHelper
   # styled to showcase different sizes of the given font.
 
   def kss_specimen
-    render partial: with_namespace('styleguides/specimen')
+    render partial: with_namespace('styleguides/specimen', partial: true)
   end
 
   # ### kss_swatch
@@ -100,7 +100,7 @@ module StyleguideHelper
   #       = kss_swatch 'red', '#ff3322', description: 'for error text'
 
   def kss_swatch(name, color, options={})
-    render partial: with_namespace('styleguides/swatch'), locals: {
+    render partial: with_namespace('styleguides/swatch', partial: true), locals: {
       name: name,
       identifier: name,
       color: color,
@@ -154,12 +154,12 @@ module StyleguideHelper
     html
   end
 
-  def with_namespace(path)
+  def with_namespace(path, partial: false)
     return path unless styleguide_namespace
 
     ns_path = "#{styleguide_namespace}/#{path}"
     begin
-      ns_path if lookup_context.find_template(ns_path)
+      ns_path if lookup_context.find_template(ns_path, [], partial)
     rescue
       path
     end
