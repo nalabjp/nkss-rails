@@ -8,7 +8,7 @@ class StyleguidesController < ActionController::Base
 
   delegate :with_namespace, to: :view_context
 
-  before_filter :set_styleguide, :only => [ :show, :all ]
+  before_action :set_styleguide, :only => [ :show, :all ]
 
   def show
     @section = params[:section].to_i
