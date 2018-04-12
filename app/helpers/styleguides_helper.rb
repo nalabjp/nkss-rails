@@ -1,7 +1,7 @@
 # # Nkss: Helpers
 # A bunch of helpers you can use in your styleguides.
 
-module StyleguideHelper
+module StyleguidesHelper
 
   # ### kss_block
   # Documents a styleguide block.
